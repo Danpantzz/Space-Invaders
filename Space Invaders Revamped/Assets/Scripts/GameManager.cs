@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private float top;
 
-    private List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
             for (float xPos = leftWall; xPos <= rightWall; xPos = xPos + enemy.GetComponent<Renderer>().bounds.size.x + gap)
             {
                 // Create a placeholder transform.
-                Transform block = enemy.transform;
+                //Transform block = enemy.transform;
 
                 // Create the block in the game world, setting it as a child of the blocks container.
-                (Instantiate(block, new Vector3(xPos, yPos, 0), Quaternion.identity) as Transform).parent = transform;
+                enemies.Add(Instantiate(enemy, new Vector3(xPos, yPos, 0), Quaternion.identity));
             }
 
             // Update the new row's y position.

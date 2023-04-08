@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 1896519912}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4987912821066645079, guid: b9af5d1cd20166648b562e45301f868f, type: 3}
   enemy: {fileID: 6387442761225243282, guid: a13a6b31b70d6634a8e91dc8d2b8a826, type: 3}
+  enemies: []
 --- !u!4 &1896519913
 Transform:
   m_ObjectHideFlags: 0
