@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 15f;
+    public GameObject bullet;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") > 0) transform.Translate(Vector2.right * speed * Time.deltaTime);
         else if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") < 0) transform.Translate(Vector2.left * speed * Time.deltaTime);
 
+        // can't go out of bounds
         if (transform.position.x > 8.35) transform.position = new Vector3(8.35f, transform.position.y, transform.position.z);
         if (transform.position.x < -8.35) transform.position = new Vector3(-8.35f, transform.position.y, transform.position.z);
+
+        if (Input.GetButtonDown("Jump")) Fire();
+    }
+
+    private void Fire()
+    {
+        Debug.Log("Fire");
+        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 1f, 0f), Quaternion.identity);
     }
 }
