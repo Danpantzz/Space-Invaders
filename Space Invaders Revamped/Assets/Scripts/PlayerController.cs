@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 15f;
+    public float speed = 10f;
     public GameObject bullet;
     
 
@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") < 0) transform.Translate(Vector2.left * speed * Time.deltaTime);
 
         // can't go out of bounds
-        if (transform.position.x > 8.35) transform.position = new Vector3(8.35f, transform.position.y, transform.position.z);
-        if (transform.position.x < -8.35) transform.position = new Vector3(-8.35f, transform.position.y, transform.position.z);
+        if (transform.position.x > 25) transform.position = new Vector3(25f, transform.position.y, transform.position.z);
+        if (transform.position.x < -25) transform.position = new Vector3(-25f, transform.position.y, transform.position.z);
 
         if (Input.GetButtonDown("Jump")) Fire();
     }
