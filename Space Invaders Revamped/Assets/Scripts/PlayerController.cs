@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
             fasterShip = false;
             smallerShip = false;
 
+            GameManager.round = 1;
+
             Destroy(this.gameObject);
             SceneManager.LoadScene("MainMenu");
             SceneManager.UnloadSceneAsync("SpaceInvaders");

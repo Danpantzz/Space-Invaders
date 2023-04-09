@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             score -= tempScore;
+            round = 1;
             SceneManager.LoadScene("MainMenu");
         }
 

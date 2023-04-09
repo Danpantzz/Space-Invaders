@@ -38,6 +38,7 @@ public class LifeCount : MonoBehaviour
             PlayerController.smallerShip = false;
             PlayerController.fasterShip = false;
 
+            GameManager.round = 1;
             SceneManager.LoadScene("MainMenu");
         }
     }
