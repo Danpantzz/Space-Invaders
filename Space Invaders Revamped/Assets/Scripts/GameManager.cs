@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
     private float top;
 
     public List<GameObject> enemies = new List<GameObject>();
+
+    private int timeCheck = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +44,12 @@ public class GameManager : MonoBehaviour
         {
             score -= tempScore;
             SceneManager.LoadScene("MainMenu");
+        }
+
+        if (Time.time > timeCheck)
+        {
+            timeCheck += 6;
+            Fire();
         }
     }
 
@@ -76,5 +86,13 @@ public class GameManager : MonoBehaviour
             // Update the new row's y position.
             yPos = yPos - enemy.GetComponent<Renderer>().bounds.size.y - gap;
         }
+    }
+
+    void Fire()
+    {
+        int index = Random.Range(0, (GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyController>().enemyCanFire.Count - 1));
+        GameObject fireEnemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyController>().enemyCanFire[index];
+        GameObject enemyBullet = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyController>().bullet;
+        Instantiate(enemyBullet, new Vector3(fireEnemy.transform.position.x, fireEnemy.transform.position.y - 1f, 0f), Quaternion.identity);
     }
 }

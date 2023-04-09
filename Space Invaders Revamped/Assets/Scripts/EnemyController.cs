@@ -24,16 +24,12 @@ public class EnemyController : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("Manager");
         initialEnemyCount = gameManager.GetComponent<GameManager>().enemies.Count;
-
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckCanFire();
-
-
-        CanFire();
 
         if (moveRight)
         {
@@ -87,8 +83,6 @@ public class EnemyController : MonoBehaviour
         {
             speed = 10;
         }
-
-        
     }
 
     void CheckCanFire()
@@ -141,16 +135,5 @@ public class EnemyController : MonoBehaviour
                 enemyCanFire.Remove(enemyCanFire[i]);
             }
         }
-    }
-
-    void CanFire()
-    {
-        int index = (int) Mathf.Floor(Random.Range(0f, 10f));
-        enemyCanFire[index].GetComponent<EnemyController>().Fire();
-    }
-
-    void Fire()
-    {
-        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1f, 0f), Quaternion.identity);
     }
 }
