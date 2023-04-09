@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
 {
     public float speed = 0.5f;
 
+    public GameObject bullet;
+
     private int speedBoostGot = 0;
 
     private bool moveRight = true;
@@ -28,6 +30,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckCanFire();
+
+
         CanFire();
 
         if (moveRight)
@@ -86,7 +91,7 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    void CanFire()
+    void CheckCanFire()
     {
         List<GameObject> enemy = gameManager.GetComponent<GameManager>().enemies;
         int count = gameManager.GetComponent<GameManager>().enemies.Count;
@@ -138,8 +143,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    void CanFire()
+    {
+        int index = (int) Mathf.Floor(Random.Range(0f, 10f));
+        enemyCanFire[index].GetComponent<EnemyController>().Fire();
+    }
+
     void Fire()
     {
-
+        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 1f, 0f), Quaternion.identity);
     }
 }

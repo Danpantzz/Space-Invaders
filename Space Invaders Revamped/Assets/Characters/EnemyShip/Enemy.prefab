@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  bullet: {fileID: 3379972306009658826, guid: 9f1d38557935eab43b405625dfaf7377, type: 3}
+  enemyCanFire: []
