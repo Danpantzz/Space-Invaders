@@ -20,7 +20,7 @@ public class ChangeScene : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && mainScreen.activeSelf)
         {
             Application.Quit();
         }

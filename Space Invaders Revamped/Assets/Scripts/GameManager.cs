@@ -24,10 +24,21 @@ public class GameManager : MonoBehaviour
 
     private int timeCheck = 0;
 
+    private void Awake()
+    {
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Enemy Bullet");
+        foreach (GameObject bullet in bullets)
+        {
+            Destroy(bullet);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+
+        timeCheck = 0;
 
         leftWall = -15f;
         rightWall = 15f;
@@ -45,12 +56,7 @@ public class GameManager : MonoBehaviour
             score -= tempScore;
             round = 1;
             SceneManager.LoadScene("MainMenu");
-        }
-
-        if (Time.time > timeCheck)
-        {
-            timeCheck += 4;
-            Fire();
+            SceneManager.UnloadSceneAsync("SpaceInvaders");
         }
 
         for (int i = 0; i < enemies.Count; i++)
@@ -72,6 +78,12 @@ public class GameManager : MonoBehaviour
                 Destroy(GameObject.FindGameObjectWithTag("Enemy Bullet"));
                 InitializeEnemies();
             }
+        }
+
+        if (Time.time > timeCheck)
+        {
+            timeCheck += 4;
+            Fire();
         }
     }
 
