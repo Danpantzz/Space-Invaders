@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         Debug.Log("colliding");
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
         Destroy(collision.gameObject);
-        GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().enemies.Remove(collision.gameObject);
+        //GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().enemies.Remove(collision.gameObject);
         Destroy(this.gameObject);
 
         GameManager.score += 10;
