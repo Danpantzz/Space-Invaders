@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
 
+    public static int score;
+
     private float leftWall;
     private float rightWall;
 

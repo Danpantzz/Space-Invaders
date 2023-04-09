@@ -33,5 +33,7 @@ public class Bullet : MonoBehaviour
         Destroy(collision.gameObject);
         GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().enemies.Remove(collision.gameObject);
         Destroy(this.gameObject);
+
+        GameManager.score += 10;
     }
 }
