@@ -10,6 +10,11 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("SpaceInvaders");
     }
 
+    public void Awake()
+    {
+        
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

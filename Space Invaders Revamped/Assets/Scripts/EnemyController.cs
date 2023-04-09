@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
@@ -69,17 +70,17 @@ public class EnemyController : MonoBehaviour
             transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
         
-        if (speedBoostGot == 0 && gameManager.GetComponent<GameManager>().enemies.Count < Mathf.Floor(initialEnemyCount - (initialEnemyCount * 0.2f)))
+        if (speedBoostGot == 0 && GameObject.FindGameObjectsWithTag("Enemy").Length < Mathf.Floor(initialEnemyCount - (initialEnemyCount * 0.2f)))
         {
             speed = 4;
             speedBoostGot += 1;
         }
-        else if (speedBoostGot == 1 && gameManager.GetComponent<GameManager>().enemies.Count < Mathf.Floor(initialEnemyCount - (initialEnemyCount * 0.4f)))
+        else if (speedBoostGot == 1 && GameObject.FindGameObjectsWithTag("Enemy").Length < Mathf.Floor(initialEnemyCount - (initialEnemyCount * 0.4f)))
         {
             speed = 6;
             speedBoostGot += 1;
         }
-        if (speedBoostGot == 2 && gameManager.GetComponent<GameManager>().enemies.Count < Mathf.Floor(initialEnemyCount - (initialEnemyCount * 0.8f)))
+        if (speedBoostGot == 2 && GameObject.FindGameObjectsWithTag("Enemy").Length < Mathf.Floor(initialEnemyCount - (initialEnemyCount * 0.8f)))
         {
             speed = 10;
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,13 +30,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("colliding");
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
-        Destroy(collision.gameObject);
-        //GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().enemies.Remove(collision.gameObject);
-        Destroy(this.gameObject);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("colliding");
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
+            Destroy(collision.gameObject);
+            //GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().enemies.Remove(collision.gameObject);
+            Destroy(this.gameObject);
 
-        GameManager.score += 10;
-        GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().tempScore += 10;
+            GameManager.score += 10;
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().tempScore += 10;
+        }
+        
     }
 }

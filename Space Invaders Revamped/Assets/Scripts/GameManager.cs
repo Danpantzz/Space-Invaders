@@ -51,6 +51,26 @@ public class GameManager : MonoBehaviour
             timeCheck += 6;
             Fire();
         }
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] != null)
+            {
+                break;
+            }
+            else if (enemies[i] == null && i == enemies.Count - 1)
+            {
+                round++;
+                enemies.Clear();
+                GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+                foreach (GameObject bullet in bullets)
+                {
+                    Destroy(bullet);
+                }
+                Destroy(GameObject.FindGameObjectWithTag("Enemy Bullet"));
+                InitializeEnemies();
+            }
+        }
     }
 
     public void InitializeEnemies()

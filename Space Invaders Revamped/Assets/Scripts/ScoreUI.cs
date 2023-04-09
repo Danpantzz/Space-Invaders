@@ -11,12 +11,12 @@ public class ScoreUI : MonoBehaviour
     void Start()
     {
         //scoreText = GetComponent<TMPro.TextMeshProUGUI>();
-        scoreText.text = "SCORE\n" + GameManager.score.ToString("0000");
+        scoreText.text = "POINTS\n" + GameManager.score.ToString("0000");
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "SCORE\n" + GameManager.score.ToString("0000");
+        scoreText.text = "POINTS\n" + GameManager.score.ToString("0000");
     }
 }

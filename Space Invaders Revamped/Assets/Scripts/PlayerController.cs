@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
     public GameObject bullet;
-    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,5 +32,22 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Fire");
         Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 1f, 0f), Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("MainMenu");
+            SceneManager.UnloadSceneAsync("SpaceInvaders");
+        }
+
+        if (collision.gameObject.tag == "Enemy Bullet")
+        {
+            transform.position = new Vector2(0f, -9f);
+
+            GameObject.FindGameObjectWithTag("UIManager").GetComponent<LifeCount>().LoseLife();
+        }
     }
 }
