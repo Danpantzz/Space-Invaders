@@ -29,8 +29,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckCanFire();
-
         if (moveRight)
         {
             if (transform.position.x >= 23f)
@@ -83,6 +81,8 @@ public class EnemyController : MonoBehaviour
         {
             speed = 10;
         }
+
+        CheckCanFire();
     }
 
     void CheckCanFire()
