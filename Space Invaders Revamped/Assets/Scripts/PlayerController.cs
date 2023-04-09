@@ -8,10 +8,21 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public GameObject bullet;
 
+    public static bool extraLife = false;
+    public static bool fasterShip = false;
+    public static bool smallerShip = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        if (fasterShip)
+        {
+            speed = 15f;
+        }
+        if (smallerShip)
+        {
+            transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        }
     }
 
     // Update is called once per frame
@@ -38,6 +49,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            extraLife = false;
+            fasterShip = false;
+            smallerShip = false;
+
             Destroy(this.gameObject);
             SceneManager.LoadScene("MainMenu");
             SceneManager.UnloadSceneAsync("SpaceInvaders");

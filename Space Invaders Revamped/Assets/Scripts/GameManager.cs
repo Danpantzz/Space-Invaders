@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if (Time.time > timeCheck)
         {
-            timeCheck += 6;
+            timeCheck += 3;
             Fire();
         }
 

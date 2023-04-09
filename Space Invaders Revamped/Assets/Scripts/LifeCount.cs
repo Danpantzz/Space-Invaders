@@ -12,6 +12,14 @@ public class LifeCount : MonoBehaviour
     public Image[] lives;
     private int livesRemaining = 3;
 
+    public void Start()
+    {
+        if (PlayerController.extraLife)
+        {
+            livesRemaining = 4;
+        }
+    }
+
     public void LoseLife()
     {
         livesRemaining--;
@@ -21,6 +29,10 @@ public class LifeCount : MonoBehaviour
 
         if (livesRemaining == 0)
         {
+            PlayerController.extraLife = false;
+            PlayerController.smallerShip = false;
+            PlayerController.fasterShip = false;
+
             SceneManager.LoadScene("MainMenu");
         }
     }
