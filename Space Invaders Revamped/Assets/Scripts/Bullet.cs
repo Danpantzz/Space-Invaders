@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject gameManager;
-
     float speed = 8f;
 
 
