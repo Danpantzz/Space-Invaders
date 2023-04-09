@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject enemy;
 
     public static int score;
+    public static int round = 1;
+
+    public int tempScore;
 
     private float leftWall;
     private float rightWall;
@@ -33,7 +36,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            score -= tempScore;
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void InitializeEnemies()

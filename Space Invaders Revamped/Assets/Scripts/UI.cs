@@ -10,7 +10,7 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText = GetComponent<TMPro.TextMeshProUGUI>();
+        //scoreText = GetComponent<TMPro.TextMeshProUGUI>();
         scoreText.text = "SCORE\n" + GameManager.score.ToString("0000");
     }
 

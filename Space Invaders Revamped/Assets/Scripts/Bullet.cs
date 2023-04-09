@@ -35,5 +35,6 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject);
 
         GameManager.score += 10;
+        GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().tempScore += 10;
     }
 }
