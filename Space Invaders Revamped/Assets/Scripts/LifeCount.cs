@@ -17,6 +17,11 @@ public class LifeCount : MonoBehaviour
         if (PlayerController.extraLife)
         {
             livesRemaining = 4;
+            healthText.text = livesRemaining.ToString();
+        }
+        else
+        {
+            lives[3].enabled = false;
         }
     }
 

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    GameObject shopScreen;
-    GameObject mainScreen;
+    public GameObject shopScreen;
+    public GameObject mainScreen;
 
     public void StartGame()
     {
@@ -40,19 +40,31 @@ public class ChangeScene : MonoBehaviour
 
     public void BuyExtraLife()
     {
-        PlayerController.extraLife = true;
-        GameManager.score -= 20;
+        if (GameManager.score >= 600 && !PlayerController.extraLife && !PlayerController.fasterShip && !PlayerController.smallerShip)
+        {
+            PlayerController.extraLife = true;
+            GameManager.score -= 600;
+        }
+        
     }
 
     public void BuyFasterShip()
     {
-        PlayerController.fasterShip = true;
-        GameManager.score -= 20;
+        if (GameManager.score >= 1000 && !PlayerController.fasterShip && !PlayerController.extraLife && !PlayerController.smallerShip)
+        {
+            PlayerController.fasterShip = true;
+            GameManager.score -= 1000;
+        }
+        
     }
 
     public void BuySmallerShip()
     {
-        PlayerController.smallerShip = true;
-        GameManager.score -= 20;
+        if (GameManager.score >= 800 && !PlayerController.smallerShip && !PlayerController.extraLife && !PlayerController.fasterShip)
+        {
+            PlayerController.smallerShip = true;
+            GameManager.score -= 800;
+        }
+        
     }
 }

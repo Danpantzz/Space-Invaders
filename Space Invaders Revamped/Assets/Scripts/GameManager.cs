@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if (Time.time > timeCheck)
         {
-            timeCheck += 3;
+            timeCheck += 4;
             Fire();
         }
 
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
             else if (enemies[i] == null && i == enemies.Count - 1)
             {
                 round++;
+                tempScore = 0;
                 enemies.Clear();
                 GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
                 foreach (GameObject bullet in bullets)
