@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
 
-        leftWall = -25f;
-        rightWall = 25f;
-        top = 13f;
+        leftWall = -15f;
+        rightWall = 15f;
+        top = 9f;
 
         Instantiate(player);
         InitializeEnemies();
