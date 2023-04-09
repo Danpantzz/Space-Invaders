@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject gameManager;
+
     float speed = 8f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,7 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("colliding"); 
         Destroy(collision.gameObject);
+        GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().enemies.Remove(collision.gameObject);
         Destroy(this.gameObject);
     }
 }
